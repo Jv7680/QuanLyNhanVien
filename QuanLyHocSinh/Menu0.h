@@ -1,4 +1,5 @@
 ﻿#pragma once
+#pragma warning( disable : 6031)
 #include<vector>
 #include"Console.h"
 #include"HamTaoVaChonChucNang.h"
@@ -70,8 +71,6 @@ void Menu0()
 			}
 			if (luaChon == 13) //Phím enter
 			{
-				_setmode(_fileno(stdin), _O_U16TEXT);
-				_setmode(_fileno(stdout), _O_U16TEXT);
 				int ketQuaLuaChon = (yTenChucNang - y + 2) / 2;
 				if (ketQuaLuaChon == 1)
 				{
@@ -81,10 +80,17 @@ void Menu0()
 					wstring duongDan;
 					wstring nhapDuongDan = L"##Hãy nhập đường dẫn nơi chứa tệp danh sách cần mở(Ví dụ: C:\\danhsach.csv)##";
 					int soLuongBanGhi;
-					ChucNang(44, 15, 80, 5, mauSac1, nhapDuongDan);
-					GotoXY(47, 18);
-					getline(wcin, duongDan);
-					system("cls");
+					ChucNang(24, 15, 120, 5, mauSac1, nhapDuongDan);
+
+					_setmode(_fileno(stdin), _O_U16TEXT);
+					_setmode(_fileno(stdout), _O_U16TEXT);
+
+					GotoXY(27, 18);
+					ShowCur(1);
+					TextColor(6);
+					getline(wcin, duongDan); //màu nhập đường dẫn
+					ShowCur(0);
+					system("cls"); 
 					_setmode(_fileno(stdin), _O_TEXT);
 					_setmode(_fileno(stdout), _O_TEXT);
 

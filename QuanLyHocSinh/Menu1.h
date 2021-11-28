@@ -1,4 +1,5 @@
 ﻿#pragma once
+#pragma warning( disable : 6031)
 #include<vector>
 #include"Console.h"
 #include"HamTaoVaChonChucNang.h"

@@ -1,4 +1,5 @@
 ﻿#pragma once
+#pragma warning( disable : 6031)
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -18,7 +19,7 @@ void DocFileCSV(wstring duongDan, int check, int& soLuongBanGhi, int x = 0, int 
 	locale loc(std::locale(), new std::codecvt_utf8<wchar_t>); //định dạnh file utf 8 with bom
 
 	wifstream fileCSV(duongDan, std::ios::in);
-
+//D:\HKI_2021_2022\Kĩ_thuật_lập_trình\QuanLyHocSinh\QuanLyHocSinh\utf8bom.csv
 	if (check == 1) //nếu check bật thì chỉ kiểm tra file đọc được ko
 	{
 		if (!fileCSV)
@@ -67,6 +68,7 @@ void DocFileCSV(wstring duongDan, int check, int& soLuongBanGhi, int x = 0, int 
 		{
 			soLuongBanGhi++;
 			int viTriX = 0;
+			TextColor(7); //màu in bản ghi
 			//Bắt đầu in ra màn hình
 			if (soLuongBanGhi > 0)
 			{
