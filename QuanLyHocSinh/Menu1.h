@@ -73,6 +73,7 @@ int Menu1(wstring duongDan, int soLuongBanGhi)
 			if (luaChon == 13) //Phím enter
 			{
 				int ketQuaLuaChon = (yTenChucNang - y + 2) / 2;
+
 				if (ketQuaLuaChon == 1)
 				{
 					TextColor(6);

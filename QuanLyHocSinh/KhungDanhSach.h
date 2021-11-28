@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include"HamTaoVaChonChucNang.h"
 #include"DocFileCSV.h"
+#include"Menu1.h"
+
+int Menu1(wstring, int);
 
 void InDanhSach(wstring duongDan, int soLuongBanGhi)
 {
@@ -64,4 +67,19 @@ void InDanhSach(wstring duongDan, int soLuongBanGhi)
 		}
 	}
 	DocFileCSV(duongDan, 0, soLuongBanGhi, x + 1, y + 3, danhSachCot);
+
+	//Bắt esc để quay lại menu1
+	char luaChon;
+	while (true)
+	{
+		if (_kbhit())
+		{
+			luaChon = _getch();
+			if (luaChon == 27) //esc
+			{
+				system("cls");
+				Menu1(duongDan, soLuongBanGhi);
+			}
+		}
+	}
 }
