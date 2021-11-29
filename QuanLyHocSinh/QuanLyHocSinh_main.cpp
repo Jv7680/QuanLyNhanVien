@@ -9,6 +9,7 @@ int main()
 {
 	Menu0();	
 
+	
 	system("pause");
 }
 

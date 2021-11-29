@@ -67,7 +67,7 @@ void DocFileCSV(wstring duongDan, int check, int& soLuongBanGhi, int x = 0, int 
 		while (getline(fileCSV, line))
 		{
 			soLuongBanGhi++;
-				int viTriX = 0;
+			int viTriX = 0;
 			TextColor(7); //màu in bản ghi
 			//Bắt đầu in ra màn hình
 			if (soLuongBanGhi > 0)

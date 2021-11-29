@@ -23,6 +23,7 @@ void InDanhSach(wstring duongDan, int soLuongBanGhi)
 
 	const int x = 1, y = 5, chieuDai = 40, chieuCao = 3, mauSac1 = 13, mauSac2 = 86;
 
+	//In ra cái khung
 	for (size_t dong = 0; dong < soLuongBanGhi + 1; dong++)  //load theo dòng, dòng 0 là tên các thuộc tính
 	{
 		//Biến viTriCotKeTiep lưu vị trí cộng thêm, vị trí này sẽ bắt đầu in cột tiếp theo
@@ -66,6 +67,8 @@ void InDanhSach(wstring duongDan, int soLuongBanGhi)
 			}
 		}
 	}
+	
+	//Chỉ in dữ liệu trong file
 	DocFileCSV(duongDan, 0, soLuongBanGhi, x + 1, y + 3, danhSachCot);
 
 	//Bắt esc để quay lại menu1

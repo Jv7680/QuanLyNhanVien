@@ -1,15 +1,13 @@
 ﻿#pragma once
-#pragma warning( disable : 6031)
-#include<vector>
 #include"Console.h"
+#include<vector>
+#include<string>
+#include<iomanip>
+#include<io.h>
+#include<fcntl.h>
 #include"HamTaoVaChonChucNang.h"
-#include"DocFileCSV.h"
-#include"Menu0.h"
-#include"KhungDanhSach.h"
-#include"SapXep.h"
-//Trả về số của chức năng
-int Menu1(wstring duongDan, int soLuongBanGhi)
-{	
+void SapXep()
+{
 	MaximizeWindow();
 	DisableCtrButton(0, 0, 1);
 	ShowCur(0);
@@ -17,12 +15,12 @@ int Menu1(wstring duongDan, int soLuongBanGhi)
 	_setmode(_fileno(stdin), _O_U16TEXT);
 	_setmode(_fileno(stdout), _O_U16TEXT);
 
-	GotoXY(59, 5);
+	GotoXY(69, 5);
 	TextColor(6);
-	wcout << L"\1===================MAIN MENU===================\1";
-	vector<wstring> danhSachChucNang = { L"1. Xem danh sách.", L"2. Thêm nhân viên", L"3. Xóa nhân viên", L"4. Sắp xếp", L"5. Tìm kiếm.", L"6. Sửa."};
-	
-	const int x = 64, y = 15, chieuDai = 40, chieuCao = 3, mauSac1 = 6, mauSac2 = 86;
+	wcout << L"\1###NHẬP LỰA CHỌN CỦA BẠN###\1";
+	vector<wstring> danhSachChucNang = { L"1. Theo tên.", L"2. Theo lương", L"3. Theo thời gian trễ." };
+
+	const int x = 130, y = 3, chieuDai = 24, chieuCao = 3, mauSac1 = 6, mauSac2 = 86;
 
 	DaChucNang(x, y, chieuDai, chieuCao, mauSac1, danhSachChucNang);
 
@@ -32,12 +30,13 @@ int Menu1(wstring duongDan, int soLuongBanGhi)
 
 	ChonChucNang(xTenChucNang, yTenChucNang, chieuDai, mauSac2, danhSachChucNang[chiSoDanhSach]);
 
+	//Bắt sự kiện phím
 	while (true)
 	{
 		if (_kbhit())
 		{
 			char luaChon = _getch();
-			
+
 			if (luaChon == -32) //Các phím lên xuống trái phải đi theo mã -32
 			{
 				luaChon = _getch();
@@ -66,38 +65,23 @@ int Menu1(wstring duongDan, int soLuongBanGhi)
 					ChonChucNang(xTenChucNang, yTenChucNang, chieuDai, mauSac2, danhSachChucNang[chiSoDanhSach]);
 				}
 			}
-			if (luaChon == 27) //Phím esc, đang ở menu1 thì load menu0
+			if (luaChon == 27) //Phím esc, đang ở menu0 thì thoát
 			{
-				TextColor(6);
-				wcout << L" ";
-				system("cls");
-				Menu0();
+				exit(0);
 			}
 			if (luaChon == 13) //Phím enter
 			{
 				int ketQuaLuaChon = (yTenChucNang - y + 2) / 2;
 
-				if (ketQuaLuaChon == 1)
+				if (ketQuaLuaChon == 1) //Đã có danh sách
 				{
-					TextColor(6);
-					wcout << L" ";
-					system("cls");
-					InDanhSach(duongDan ,soLuongBanGhi);
-					break;
+
 				}
-				else if(ketQuaLuaChon == 2)
+				else  //Tạo danh sách mới
 				{
-					TextColor(6);
-					wcout << L" ";
-					system("cls");
-					SapXep();
+
 				}
 			}
 		}
 	}
-
-	_setmode(_fileno(stdin), _O_TEXT);
-	_setmode(_fileno(stdout), _O_TEXT);
-
-	return 0;
 }

@@ -149,6 +149,7 @@
     <ClInclude Include="KhungDanhSach.h" />
     <ClInclude Include="Menu0.h" />
     <ClInclude Include="Menu1.h" />
+    <ClInclude Include="SapXep.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

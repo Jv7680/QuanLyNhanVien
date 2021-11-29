@@ -41,5 +41,8 @@
     <ClInclude Include="GhiFileCSV.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SapXep.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
