@@ -3,16 +3,16 @@
 #include"DocFileCSV.h"
 #include"Menu1.h"
 
-int Menu1(wstring, int);
+int Menu1(string, int);
 
-void InDanhSach(wstring duongDan, int soLuongBanGhi)
+void InDanhSach(string duongDan, int soLuongBanGhi)
 {
 	MaximizeWindow();
 	DisableCtrButton(0, 0, 1);
 	ShowCur(0);
 	
 	//Ghi đường dẫn file để người xem biết
-	wstring hienDuongDan = L" ##Vị Trí Tệp: " + duongDan;
+	wstring hienDuongDan = L" ##Vị Trí Tệp: ";
 	ChucNang(24, 1, 120, 3, 12, hienDuongDan);
 
 	vector<wstring> danhSachCot = {

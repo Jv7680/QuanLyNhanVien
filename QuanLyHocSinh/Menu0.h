@@ -3,6 +3,8 @@
 #include<vector>
 #include"Console.h"
 #include"HamTaoVaChonChucNang.h"
+#include"DocFileCSV.h"
+#include"GhiFileCSV.h"
 #include"Menu1.h"
 
 //Menu mở đầu
@@ -72,27 +74,23 @@ void Menu0()
 			if (luaChon == 13) //Phím enter
 			{
 				int ketQuaLuaChon = (yTenChucNang - y + 2) / 2;
-				if (ketQuaLuaChon == 1)
+
+				if (ketQuaLuaChon == 1) //Đẫ có danh sách
 				{
 					TextColor(6);					
 					wcout << L" "; 
 					system("cls");
-					wstring duongDan;
+					string duongDan;
 					wstring nhapDuongDan = L"##Hãy nhập đường dẫn nơi chứa tệp danh sách cần mở(Ví dụ: C:\\danhsach.csv)##";
 					int soLuongBanGhi;
 					ChucNang(24, 15, 120, 5, mauSac1, nhapDuongDan);
 
-					_setmode(_fileno(stdin), _O_U16TEXT);
-					_setmode(_fileno(stdout), _O_U16TEXT);
-
 					GotoXY(27, 18);
 					ShowCur(1);
-					TextColor(6);
-					getline(wcin, duongDan); //màu nhập đường dẫn
+					TextColor(6); //màu nhập đường dẫn
+					getline(cin, duongDan); 
 					ShowCur(0);
 					system("cls"); 
-					_setmode(_fileno(stdin), _O_TEXT);
-					_setmode(_fileno(stdout), _O_TEXT);
 
 					//kiểm tra file có mở đc ko rồi ms load vào menu1
 					DocFileCSV(duongDan, 1, soLuongBanGhi);
@@ -100,9 +98,34 @@ void Menu0()
 					Menu1(duongDan, soLuongBanGhi);
 					break;
 				}
-				else
+				else  //Tạo danh sách mới
 				{
-					//chưa xử lý
+					TextColor(6);
+					wcout << L" ";
+					system("cls");
+					string duongDan;	//Đường dẫn không dấu
+					string tenDanhSach;
+					wstring nhapDuongDan = L"##Hãy nhập đường dẫn nơi lưu danh sách mới(Ví dụ: C:\\danhsachnhanvien\\), nếu để trống mục này, tệp sẽ được lưu chung với thư mục chứa chương trình##";
+					wstring nhapTenDanhSach = L"##Hãy nhập tên của danh sách mới(Ví dụ: chinhanh1)##";
+
+					ChucNang(9, 15, 150, 5, mauSac1, nhapDuongDan);
+					ChucNang(24, 20, 120, 5, mauSac1, nhapTenDanhSach);
+					GotoXY(27, 18);
+					ShowCur(1);
+					TextColor(6); //màu nhập đường dẫn
+					getline(cin, duongDan); 
+					GotoXY(27, 23);
+					TextColor(6); //màu nhập đường dẫn
+					getline(cin, tenDanhSach);
+					ShowCur(0);
+					system("cls");
+
+					//Gọi hàm ghi file
+					GhiFileCSV(duongDan, tenDanhSach);
+					//system("cls");
+					//Ghi được thì load menu1
+					Menu1(duongDan, 0);
+					break;
 				}
 			}
 		}

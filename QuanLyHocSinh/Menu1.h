@@ -8,7 +8,7 @@
 #include"KhungDanhSach.h"
 
 //Trả về số của chức năng
-int Menu1(wstring duongDan, int soLuongBanGhi)
+int Menu1(string duongDan, int soLuongBanGhi)
 {	
 	MaximizeWindow();
 	DisableCtrButton(0, 0, 1);

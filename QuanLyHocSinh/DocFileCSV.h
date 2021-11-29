@@ -11,7 +11,7 @@ using namespace std;
 void Menu0();
 
 //Đọc và hiển thị dữ liệu trong file CSV vào chương trình
-void DocFileCSV(wstring duongDan, int check, int& soLuongBanGhi, int x = 0, int y = 0, vector<wstring> danhSachCot = {})
+void DocFileCSV(string duongDan, int check, int& soLuongBanGhi, int x = 0, int y = 0, vector<wstring> danhSachCot = {})
 {
 	_setmode(_fileno(stdin), _O_U16TEXT);
 	_setmode(_fileno(stdout), _O_U16TEXT);
@@ -19,7 +19,7 @@ void DocFileCSV(wstring duongDan, int check, int& soLuongBanGhi, int x = 0, int 
 	locale loc(std::locale(), new std::codecvt_utf8<wchar_t>); //định dạnh file utf 8 with bom
 
 	wifstream fileCSV(duongDan, std::ios::in);
-//D:\HKI_2021_2022\Kĩ_thuật_lập_trình\QuanLyHocSinh\QuanLyHocSinh\utf8bom.csv
+
 	if (check == 1) //nếu check bật thì chỉ kiểm tra file đọc được ko
 	{
 		if (!fileCSV)
@@ -67,7 +67,7 @@ void DocFileCSV(wstring duongDan, int check, int& soLuongBanGhi, int x = 0, int 
 		while (getline(fileCSV, line))
 		{
 			soLuongBanGhi++;
-			int viTriX = 0;
+				int viTriX = 0;
 			TextColor(7); //màu in bản ghi
 			//Bắt đầu in ra màn hình
 			if (soLuongBanGhi > 0)

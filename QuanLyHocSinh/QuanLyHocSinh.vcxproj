@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="Console.h" />
     <ClInclude Include="DocFileCSV.h" />
+    <ClInclude Include="GhiFileCSV.h" />
     <ClInclude Include="HamTaoVaChonChucNang.h" />
     <ClInclude Include="KhungDanhSach.h" />
     <ClInclude Include="Menu0.h" />
