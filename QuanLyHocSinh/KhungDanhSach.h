@@ -3,20 +3,20 @@
 #include"DocFileCSV.h"
 #include"Menu1.h"
 
-int Menu1(string, int);
+int Menu1(wstring, int);
 
-void InDanhSach(string duongDan, int soLuongBanGhi)
+void InDanhSach(wstring duongDan, int soLuongBanGhi)
 {
 	MaximizeWindow();
 	DisableCtrButton(0, 0, 1);
 	ShowCur(0);
 	
 	//Ghi đường dẫn file để người xem biết
-	wstring hienDuongDan = L" ##Vị Trí Tệp: ";
+	wstring hienDuongDan = L" ##Vị Trí Tệp: " + duongDan;
 	ChucNang(24, 1, 120, 3, 12, hienDuongDan);
 
 	vector<wstring> danhSachCot = {
-								L"STT", L"Mã NV", L"Họ Và Tên", L"Ngày Sinh", L"Giới Tính", L"Doanh Thu Tháng(Triệu Đồng)",
+								L"STT", L"Mã NV", L"Họ Và Tên", L"Ngày Sinh ", L"Giới Tính", L"Doanh Thu Tháng(Triệu Đồng)",
 								L"Thưởng Thêm Theo Doanh Thu(%)", L"Tổng Thời Gian Đi Trễ(phút)", L"Tổng Số Giờ Làm",
 								L"Tổng Lương(Triệu Đồng)"
 	};

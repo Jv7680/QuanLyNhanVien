@@ -75,20 +75,23 @@ void Menu0()
 			{
 				int ketQuaLuaChon = (yTenChucNang - y + 2) / 2;
 
-				if (ketQuaLuaChon == 1) //Đẫ có danh sách
+				if (ketQuaLuaChon == 1) //Đã có danh sách
 				{
 					TextColor(6);					
 					wcout << L" "; 
 					system("cls");
-					string duongDan;
-					wstring nhapDuongDan = L"##Hãy nhập đường dẫn nơi chứa tệp danh sách cần mở(Ví dụ: C:\\danhsach.csv)##";
+					wstring duongDan;
+					wstring nhapDuongDan = L"##Hãy nhập đường dẫn nơi chứa tệp danh sách cần mở(Ví dụ: C:\\danhsach.txt)##";
 					int soLuongBanGhi;
 					ChucNang(24, 15, 120, 5, mauSac1, nhapDuongDan);
+
+					_setmode(_fileno(stdin), _O_U16TEXT);
+					_setmode(_fileno(stdout), _O_U16TEXT);
 
 					GotoXY(27, 18);
 					ShowCur(1);
 					TextColor(6); //màu nhập đường dẫn
-					getline(cin, duongDan); 
+					getline(wcin, duongDan); 
 					ShowCur(0);
 					system("cls"); 
 
@@ -103,28 +106,33 @@ void Menu0()
 					TextColor(6);
 					wcout << L" ";
 					system("cls");
-					string duongDan;	//Đường dẫn không dấu
-					string tenDanhSach;
+					wstring duongDan;	//Đường dẫn không dấu
+					wstring tenDanhSach;
 					wstring nhapDuongDan = L"##Hãy nhập đường dẫn nơi lưu danh sách mới(Ví dụ: C:\\danhsachnhanvien\\), nếu để trống mục này, tệp sẽ được lưu chung với thư mục chứa chương trình##";
 					wstring nhapTenDanhSach = L"##Hãy nhập tên của danh sách mới(Ví dụ: chinhanh1)##";
 
 					ChucNang(9, 15, 150, 5, mauSac1, nhapDuongDan);
 					ChucNang(24, 20, 120, 5, mauSac1, nhapTenDanhSach);
+
+					_setmode(_fileno(stdin), _O_U16TEXT);
+					_setmode(_fileno(stdout), _O_U16TEXT);
+
 					GotoXY(27, 18);
 					ShowCur(1);
 					TextColor(6); //màu nhập đường dẫn
-					getline(cin, duongDan); 
+					getline(wcin, duongDan); 
 					GotoXY(27, 23);
 					TextColor(6); //màu nhập đường dẫn
-					getline(cin, tenDanhSach);
+					getline(wcin, tenDanhSach);
 					ShowCur(0);
 					system("cls");
 
 					//Gọi hàm ghi file
-					GhiFileCSV(duongDan, tenDanhSach);
+					GhiFileCSV(duongDan, tenDanhSach, 1);
 					//system("cls");
 					//Ghi được thì load menu1
-					Menu1(duongDan, 0);
+					wstring fullDuongDan = duongDan + tenDanhSach;
+					Menu1(fullDuongDan, 0);
 					break;
 				}
 			}

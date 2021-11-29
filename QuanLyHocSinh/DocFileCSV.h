@@ -11,7 +11,7 @@ using namespace std;
 void Menu0();
 
 //Đọc và hiển thị dữ liệu trong file CSV vào chương trình
-void DocFileCSV(string duongDan, int check, int& soLuongBanGhi, int x = 0, int y = 0, vector<wstring> danhSachCot = {})
+void DocFileCSV(wstring duongDan, int check, int& soLuongBanGhi, int x = 0, int y = 0, vector<wstring> danhSachCot = {})
 {
 	_setmode(_fileno(stdin), _O_U16TEXT);
 	_setmode(_fileno(stdout), _O_U16TEXT);
@@ -20,11 +20,11 @@ void DocFileCSV(string duongDan, int check, int& soLuongBanGhi, int x = 0, int y
 
 	wifstream fileCSV(duongDan, std::ios::in);
 
-	if (check == 1) //nếu check bật thì chỉ kiểm tra file đọc được ko
+	if (check == 1) //nếu check bật thì CHỈ kiểm tra file đọc được ko
 	{
 		if (!fileCSV)
 		{
-			ChucNang(44, 15, 80, 3, 4, L"##ERROR: Mở tệp thất bại!! Xin kiểm tra lại đường dẫn hoặc định dạnh tệp.");
+			ChucNang(44, 15, 80, 3, 4, L"##ERROR: Mở tệp thất bại!! Xin kiểm tra lại đường dẫn hoặc định dạng tệp.");
 
 			//Bắt esc để quay lại menu0
 			char luaChon;
@@ -47,7 +47,7 @@ void DocFileCSV(string duongDan, int check, int& soLuongBanGhi, int x = 0, int y
 			fileCSV.imbue(loc);
 			wstring line;
 			//Đếm số lượng bản ghi, đặt bằng -1 để bỏ qua dòng đầu là tên các thuộc tính chứ ko phải bản ghi
-			soLuongBanGhi = -1;
+			soLuongBanGhi = 0;
 			while (getline(fileCSV, line))
 			{
 				soLuongBanGhi++;
@@ -62,7 +62,7 @@ void DocFileCSV(string duongDan, int check, int& soLuongBanGhi, int x = 0, int y
 		wstring line;
 
 		//Đếm số lượng bản ghi, đặt bằng -1 để bỏ qua dòng đầu là tên các thuộc tính chứ ko phải bản ghi
-		soLuongBanGhi = -1;
+		soLuongBanGhi = 0;
 		int viTriY = 0;
 		while (getline(fileCSV, line))
 		{
